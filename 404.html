@@ -5,8 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CODEINATOR - Collaborative Code Editor</title>
     <script>
-        // Redirect all 404s to index.html and let React handle routing
-        window.location.href = '/collaborative-code-editor/';
+        // Get the current URL
+        var currentUrl = window.location.pathname;
+        console.log('404 handler - Current URL:', currentUrl);
+        
+        // If it's a room URL (starts with 'room-'), redirect to base with the room ID
+        if (currentUrl.includes('/room-')) {
+            var roomId = currentUrl.split('/room-')[1];
+            console.log('404 handler - Extracted room ID:', roomId);
+            // Redirect to base app with room ID as hash
+            window.location.href = '/collaborative-code-editor/#room-' + roomId;
+        } else {
+            // Redirect to base URL
+            window.location.href = '/collaborative-code-editor/';
+        }
     </script>
 </head>
 <body>
