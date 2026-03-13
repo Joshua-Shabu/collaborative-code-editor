@@ -9,12 +9,12 @@
         var currentUrl = window.location.pathname;
         console.log('404 handler - Current URL:', currentUrl);
         
-        // If it's a room URL (starts with 'room-'), redirect to base with the room ID
+        // If it's a room URL (starts with 'room-'), redirect to base with the room ID as query parameter
         if (currentUrl.includes('/room-')) {
             var roomId = currentUrl.split('/room-')[1];
             console.log('404 handler - Extracted room ID:', roomId);
-            // Redirect to base app with room ID as hash
-            window.location.href = '/collaborative-code-editor/#room-' + roomId;
+            // Redirect to base app with room ID as query parameter
+            window.location.href = '/collaborative-code-editor/?room=' + roomId;
         } else {
             // Redirect to base URL
             window.location.href = '/collaborative-code-editor/';
